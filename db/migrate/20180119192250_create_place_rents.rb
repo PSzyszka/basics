@@ -1,6 +1,6 @@
-class CreatePlaceRent < ActiveRecord::Migration[5.1]
+﻿class CreatePlaceRents < ActiveRecord::Migration[5.1]
   def change
-    create_table :place_rent do |t|
+    create_table :place_rents do |t|
       t.datetime :starts_at
       t.datetime :ends_at
       t.integer :price

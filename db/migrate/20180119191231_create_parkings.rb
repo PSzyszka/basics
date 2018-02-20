@@ -1,6 +1,6 @@
-class CreateParking < ActiveRecord::Migration[5.1]
+﻿class CreateParkings < ActiveRecord::Migration[5.1]
   def change
-    create_table :parking do |t|
+    create_table :parkings do |t|
       t.integer :places
       t.integer :kind
       t.integer :hour_price

@@ -1,0 +1,8 @@
+<h1>Details to car</h1>
+<pre>
+Owner first name: <%= @car.owner&.first_name %>
+Owner last name: <%= @car.owner&.last_name %>
+Registration number: <%= @car.registration_number %>
+Model: <%= @car.model %>
+Action: <%= link_to "Back", cars_path %>
+</pre>

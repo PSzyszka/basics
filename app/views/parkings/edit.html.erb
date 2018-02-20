@@ -1,0 +1,62 @@
+<h1>Edit parking</h1>
+
+<%= form_for @parking do |form| %>
+
+  <% if @parking.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@parking.errors.count, "error") %> prohibited
+        this parking from being saved:
+      </h2>
+      <ul>
+        <% @parking.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.fields_for :address do |one_address| %>
+    <p>
+      <%= one_address.label :city %><br>
+      <%= one_address.text_field :city %>
+    </p>
+
+    <p>
+      <%= one_address.label :street %><br>
+      <%= one_address.text_field :street %>
+    </p>
+
+    <p>
+      <%= one_address.label :zip_code %><br>
+      <%= one_address.text_field :zip_code %>
+    </p>
+  <% end %>
+
+  <p>
+    <%= form.label :hour_price %><br>
+    <%= form.text_field :hour_price %>
+  </p>
+
+  <p>
+    <%= form.label :day_price %><br>
+    <%= form.text_field :day_price %>
+  </p>
+
+  <p>
+    <%= form.label :places %><br>
+    <%= form.text_area :places %>
+  </p>
+
+  <p>
+    <%= form.label :kind %><br>
+    <%= form.select('k1', 'kind', Parking.kinds.collect { |k, v| [k, v] }) %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+
+<% end %>
+
+<%= link_to 'Back', parkings_path %>

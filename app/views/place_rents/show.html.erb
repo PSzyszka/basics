@@ -1,0 +1,10 @@
+<h3>Details to place rent</h3>
+<pre>
+Parking address: <%= @place_rent.parking&.address&.city %>, <%= @place_rent.parking&.address&.street %>
+Parking hour price: <%= @place_rent.parking&.hour_price %>
+Parking day price: <%= @place_rent.parking&.day_price %>
+Car model: <%= @place_rent.car&.model %>
+Start date: <%= @place_rent.starts_at %>
+End date: <%= @place_rent.ends_at %>
+Action: <%= link_to "Back to list", place_rents_path %>
+</pre>

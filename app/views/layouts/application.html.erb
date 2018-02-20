@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Castle</title>
+    <title><%= title_helper(controller_name) %></title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +9,15 @@
   </head>
 
   <body>
+    <%= render "shared/flash" %>
+    <p style="text-align:right;">
+      <% if current_person == nil %>
+        <%= link_to 'Log in', new_session_path %>
+      <% else %>
+        <%= current_person.full_name %>
+        <%= link_to 'Log out', session_path(session[:current_user_id]), method: :delete %>
+      <% end %>
+    </p>
     <%= yield %>
   </body>
 </html>

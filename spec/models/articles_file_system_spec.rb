@@ -1,4 +1,4 @@
-require 'rails_helper'
+﻿require 'rails_helper'
 
 RSpec.describe ArticlesFileSystem do
   describe '#save' do
@@ -6,7 +6,6 @@ RSpec.describe ArticlesFileSystem do
       array1 = [Article.new('naked heat', 'castle')]
       article_file_system = ArticlesFileSystem.new("#{Dir.pwd}/spec/models").save(array1)
 
-      # binding.pry
       expect(File.exist?("#{Dir.pwd}/spec/models/naked_heat.article")).to eq(true)
       expect(File.exist?("#{Dir.pwd}/spec/models/castle.article")).to eq(false)
       # expect(File.read('naked_heat.article')).to eq('|| 0 || 0 || castle')

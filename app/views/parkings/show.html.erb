@@ -1,0 +1,11 @@
+<h1>Details to parking</h1>
+<pre>
+City: <%= @parking.address&.city %>
+Street: <%= @parking.address&.street %>
+Zip code: <%= @parking.address&.zip_code %>
+Owner first name: <%= @parking.owner&.first_name %>
+Remaining places: <%= @parking.places %> left
+Hour price: <%= @parking.hour_price %> zl
+Day price: <%= @parking.day_price %> zl
+Kind: <%= @parking.kind %>
+Action: <%= link_to "Back", parkings_path %></pre>

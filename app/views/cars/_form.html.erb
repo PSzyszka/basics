@@ -1,0 +1,33 @@
+<%= form_for @car, url: cars_path, local: true do |form| %>
+
+  <% if @car.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@car.errors.count, "error") %> prohibited
+        this car from being saved:
+      </h2>
+      <ul>
+        <% @car.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= form.label :registration_number %><br>
+    <%= form.text_field :registration_number %>
+  </p>
+
+  <p>
+    <%= form.label :model %><br>
+    <%= form.text_area :model %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+
+<% end %>
+
+<%= link_to 'Back', cars_path %>

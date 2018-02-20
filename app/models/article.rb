@@ -1,4 +1,4 @@
-class Article
+﻿class Article
 	attr_reader :title, :body, :author, :created_at, :likes, :dislikes
 	attr_writer :likes, :dislikes
 

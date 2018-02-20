@@ -1,0 +1,20 @@
+<h1>List of accounts</h1>
+<table style="width:100%; text-align: center;">
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email</th>
+  </tr>
+  <% @accounts.each do |account| %>
+    <tr>
+      <td><%= account.owner&.first_name %></td>
+      <td><%= account.owner&.last_name %></td>
+      <td><%= account.email %></td>
+    </tr>
+  <% end %>
+</table>
+<ul>
+  <li><%= link_to "Create new", new_car_path %></li>
+  <li><%= link_to "List of place rents", place_rents_path %></li>
+  <li><%= link_to "List of parkings", parkings_path %></li>
+</ul>

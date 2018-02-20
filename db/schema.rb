@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180119192250) do
+ActiveRecord::Schema.define(version: 20180220111541) do
+
+  create_table "accounts", force: :cascade do |t|
+    t.string "email"
+    t.integer "owner_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "password_digest"
+    t.index ["email"], name: "index_accounts_on_email"
+    t.index ["owner_id"], name: "index_accounts_on_owner_id"
+  end
 
   create_table "addresses", force: :cascade do |t|
     t.string "city"
@@ -28,7 +38,7 @@ ActiveRecord::Schema.define(version: 20180119192250) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "parking", force: :cascade do |t|
+  create_table "parkings", force: :cascade do |t|
     t.integer "places"
     t.integer "kind"
     t.integer "hour_price"
@@ -46,7 +56,7 @@ ActiveRecord::Schema.define(version: 20180119192250) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "place_rent", force: :cascade do |t|
+  create_table "place_rents", force: :cascade do |t|
     t.datetime "starts_at"
     t.datetime "ends_at"
     t.integer "price"

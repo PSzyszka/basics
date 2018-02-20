@@ -1,0 +1,25 @@
+<h1>List of all place rents</h1>
+<table style="width:100%; text-align: center;">
+  <tr>
+    <th>Start date</th>
+    <th>End date</th>
+    <th>Hour price</th>
+    <th>Day price</th>
+    <th>Total price</th>
+  </tr>
+  <% @place_rents.each do |place_rent| %>
+    <tr>
+      <td><%= place_rent.starts_at %></td>
+      <td><%= place_rent.ends_at %></td>
+      <td><%= place_rent.parking&.hour_price %></td>
+      <td><%= place_rent.parking&.day_price %></td>
+      <td><%= place_rent.price %></td>
+      <td><%= link_to "Details", place_rent_path(place_rent.id) %></td>
+      <td><%= link_to "Delete", place_rent_path(place_rent), method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+    </tr>
+  <% end %>
+</table>
+<ul>
+  <li><%= link_to "List of cars", cars_path %></li>
+  <li><%= link_to "List of parkings", parkings_path %></li>
+</ul>
