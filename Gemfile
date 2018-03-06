@@ -9,6 +9,10 @@ Encoding.default_external = Encoding::UTF_8
 Encoding.default_internal = Encoding::UTF_8
 
 gem 'bcrypt', '~> 3.1.7', platforms: :ruby
+gem 'devise'
+gem 'bootstrap', '~> 4.0.0'
+gem 'jquery-rails'
+gem 'sprockets-rails', '~> 3.2.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
