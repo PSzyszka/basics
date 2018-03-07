@@ -8,7 +8,7 @@
     <tr>
       <td><%= car.registration_number %></td>
       <td><%= car.model %></td>
-      <td><%= link_to "Details", car_path(car.id) %></td>
+      <td><%= link_to "Details", car_path(car) %></td>
       <td><%= link_to "Edit", edit_car_path(car) %></td>
       <td><%= link_to "Delete", car_path(car), method: :delete, data: { confirm: 'Are you sure?' }  %></td>
     </tr>
