@@ -1,7 +1,5 @@
 class SessionsController < ApplicationController
-  def index
-    @accounts = Account.all
-  end
+  before_action :require_login, except: [:new, :create]
 
   def new
     @account = Account.new
@@ -11,19 +9,18 @@ class SessionsController < ApplicationController
     @account = Account.find_by(email: account_params[:email])
     if @account&.password_digest == account_params[:password_digest]
       session[:current_user_id] = @account.id
-      redirect_to parkings_path
+      return_path = session.delete(:return_to) || root_path
+      redirect_to return_path
     else
       @account = Account.new
-      render 'new'
+      flash.now[:error] = "The email or password is incorrect"
+      redirect_to login_path
     end
-  # rescue ActiveRecord::NoMethodError => e
-  #   flash[:error] = "The email or password is incorrect"
-  #   render 'new'
   end
 
   def destroy
     session[:current_user_id] = nil
-    redirect_to parkings_path
+    redirect_to login_path
   end
 
   private

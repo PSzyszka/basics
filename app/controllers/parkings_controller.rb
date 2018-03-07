@@ -1,6 +1,7 @@
 class ParkingsController < ApplicationController
+  before_action :require_login, except: [:index]
+
   def index
-    # @parkings = Parking.all.where(owner: current_person)
     @parkings = Parking.search(search_params)
   end
 

@@ -3,6 +3,10 @@ class CarsController < ApplicationController
     @cars = Car.where(owner_id: current_person.id)
   end
 
+  # def show
+  #   @car = Car.where(:model => params[:id]).first
+  # end
+
   def show
     @car = Car.find(params[:id])
   rescue ActiveRecord::RecordNotFound => e
