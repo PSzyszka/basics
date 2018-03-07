@@ -4,20 +4,22 @@
     <title><%= title_helper(controller_name) %></title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= render "shared/flash" %>
-    <p style="text-align:right;">
-      <% if current_person == nil %>
-        <%= link_to 'Log in', new_session_path %>
-      <% else %>
-        <%= current_person.full_name %>
-        <%= link_to 'Log out', session_path(session[:current_user_id]), method: :delete %>
-      <% end %>
-    </p>
-    <%= yield %>
+    <div class="margins-for-page">
+      <%= render "shared/flash" %>
+      <p style="text-align:right;">
+        <% if current_person == nil %>
+          <%= link_to 'Log in', login_path %>
+        <% else %>
+          <%= current_person.full_name %>
+          <%= link_to 'Log out', logout_path(session[:current_user_id]), method: :delete %>
+        <% end %>
+      </p>
+      <%= yield %>
+    </div>
   </body>
 </html>
