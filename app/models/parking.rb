@@ -2,6 +2,7 @@ class Parking < ApplicationRecord
   belongs_to :owner, class_name: 'Person', optional: true
   belongs_to :address, optional: true
   has_many :place_rents
+  has_one :account
   accepts_nested_attributes_for :address
 
   validates :hour_price, :day_price, :places, numericality: true, presence: true
