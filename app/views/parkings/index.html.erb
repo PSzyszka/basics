@@ -1,6 +1,8 @@
-<h1>List of all parkings</h1>
-<div>
-  <%= form_tag(parkings_path, method: "get", id: "search-form") do %>
+<p style="text-align:right;"><%= link_to "Sign in", register_path %></p>
+
+<%= render "parkings/header" %>
+<div class='search-tags'>
+  <%= form_tag(parkings_path, method: 'get', id: 'search-form') do %>
 
     <%= label_tag 'public_parking', 'Public' %>
     <%= check_box_tag('public', 'Public', true, class: 'checkboxes') %>
@@ -16,7 +18,7 @@
 
     <%= text_field_tag('search', params[:search], placeholder: 'Search City', class: 'checkboxes') %>
 
-    <%= submit_tag "Search", name: nil %>
+    <%= submit_tag 'Search', name: nil %>
   <% end %>
 </div>
 
@@ -25,17 +27,20 @@
   <h4>There are no parkings containing the term <%= params[:search] %>.</h4>
 <% end %>
 
-<table style="width:100%; text-align: center;">
-  <tr>
-    <th>City</th>
-    <th>Remaining places</th>
-    <th>Hour price</th>
-    <th>Day price</th>
-    <th>Kind</th>
-    <th>Action</th>
-    <th>Action</th>
-    <th>Action</th>
-  </tr>
+<table class='table' style='width:100%; text-align: center;'>
+  <thead class='thead-dark'>
+    <tr>
+      <th scope='col'>City</th>
+      <th scope='col'>Remaining places</th>
+      <th scope='col' scope='col'>Hour price</th>
+      <th scope='col'>Day price</th>
+      <th scope='col'>Kind</th>
+      <th scope='col'>Action</th>
+      <th scope='col'>Action</th>
+      <th scope='col'>Action</th>
+      <th scope='col'></th>
+    </tr>
+  </thead>
   <% @parkings.each do |parking| %>
     <tr>
       <td><%= parking.address&.city %></td>
@@ -43,15 +48,15 @@
       <td><%= parking.hour_price %> zl</td>
       <td><%= parking.day_price %> zl</td>
       <td><%= parking.kind %></td>
-      <td><%= link_to "Details", parking_path(parking.id) %></td>
-      <td><%= link_to "Edit", edit_parking_path(parking) %></td>
-      <td><%= link_to "Delete", parking_path(parking), method: :delete, data: { confirm: 'Are you sure?' }  %></td>
-      <td><%= link_to "Rent a place", new_parking_place_rent_path(parking.id) %></td>
+      <td><%= link_to 'Details', parking_path(parking.id) %></td>
+      <td><%= link_to 'Edit', edit_parking_path(parking) %></td>
+      <td><%= link_to 'Delete', parking_path(parking), method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+      <td><%= link_to 'Rent a place', new_parking_place_rent_path(parking.id) %></td>
     </tr>
   <% end %>
 </table>
 <ul>
-  <li><%= link_to "Create new", new_parking_path %></li>
-  <li><%= link_to "List of place rents", place_rents_path %></li>
-  <li><%= link_to "List of cars", cars_path %></li>
+  <li><%= link_to 'Create new', new_parking_path %></li>
+  <li><%= link_to 'List of place rents', place_rents_path %></li>
+  <li><%= link_to 'List of cars', cars_path %></li>
 </ul>

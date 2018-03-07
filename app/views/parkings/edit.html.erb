@@ -50,7 +50,7 @@
 
   <p>
     <%= form.label :kind %><br>
-    <%= form.select('k1', 'kind', Parking.kinds.collect { |k, v| [k, v] }) %>
+    <%= form.text_field :kind %>
   </p>
 
   <p>

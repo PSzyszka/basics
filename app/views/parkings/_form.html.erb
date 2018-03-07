@@ -1,60 +1,87 @@
 <%= form_for @parking, url: parkings_path, local: true do |form| %>
 
-  <% if @parking.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@parking.errors.count, "error") %> prohibited
-        this parking from being saved:
-      </h2>
-      <ul>
-        <% @parking.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
+  <%= form.fields_for :address do |one_address| %>
+    <div class='account-input'>
+      <%= one_address.label :city, class: 'label' %>
+      <%= one_address.text_field :city, class: 'label-parking' %>
+      <% if @parking.errors.any? %>
+        <div id='error_explanation' class='alert alert-danger' role='alert'>
+          <div class:='label'>
+            <%= @parking.errors[:'address.city'].first %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class='account-input'>
+      <%= one_address.label :street, class: 'label' %>
+      <%= one_address.text_field :street, class: 'label-parking' %>
+      <% if @parking.errors.any? %>
+        <div id='error_explanation' class='alert alert-danger' role='alert'>
+          <div class:='label'>
+            <%= @parking.errors[:'address.street'].first %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class='account-input'>
+      <%= one_address.label :zip_code, class: 'label' %>
+      <%= one_address.text_field :zip_code, class: 'label-parking' %>
+      <% if @parking.errors.any? %>
+        <div id='error_explanation' class='alert alert-danger' role='alert'>
+          <div class:='label'>
+            <%= @parking.errors[:'address.zip_code'].join(', ') %>
+          </div>
+        </div>
+      <% end %>
     </div>
   <% end %>
 
-  <%= form.fields_for :address do |one_address| %>
-    <p>
-      <%= one_address.label :city %><br>
-      <%= one_address.text_field :city %>
-    </p>
+  <div class='account-input'>
+    <%= form.label :hour_price, class: 'label' %>
+    <%= form.text_field :hour_price, class: 'label-parking' %>
+    <% if @parking.errors.any? %>
+      <div id='error_explanation' class='alert alert-danger' role='alert'>
+        <div class:='label'>
+          <%= @parking.errors[:hour_price].join(', ') %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 
-    <p>
-      <%= one_address.label :street %><br>
-      <%= one_address.text_field :street %>
-    </p>
+  <div class='account-input'>
+    <%= form.label :day_price, class: 'label' %>
+    <%= form.text_field :day_price, class: 'label-parking' %>
+    <% if @parking.errors.any? %>
+      <div id='error_explanation' class='alert alert-danger' role='alert'>
+        <div class:='label'>
+          <%= @parking.errors[:day_price].join(', ') %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 
-    <p>
-      <%= one_address.label :zip_code %><br>
-      <%= one_address.text_field :zip_code %>
-    </p>
-  <% end %>
+  <div class='account-input'>
+    <%= form.label :places, class: 'label' %>
+    <%= form.text_field :places, class: 'label-parking' %>
+    <% if @parking.errors.any? %>
+      <div id='error_explanation' class='alert alert-danger' role='alert'>
+        <div class:=col-xs-3>
+          <div class:='label'>
+            <%= @parking.errors[:places].join(', ') %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 
-  <p>
-    <%= form.label :hour_price %><br>
-    <%= form.text_field :hour_price %>
-  </p>
+  <%= form.label :kind, class: 'label' %>
+  <%= form.select(:kind, Parking.kinds.map {|k, v| [k ,v] }, {}, { :class => 'select'}) %>
 
-  <p>
-    <%= form.label :day_price %><br>
-    <%= form.text_area :day_price %>
-  </p>
-
-  <p>
-    <%= form.label :places %><br>
-    <%= form.text_area :places %>
-  </p>
-
-  <p>
-    <%= form.label :kind %><br>
-    <%= form.text_field :kind %>
-  </p>
-
-  <p>
+  <div class='margins-for-botton'>
     <%= form.submit %>
-  </p>
-
+  </div>
 <% end %>
 
 <%= link_to 'Back', parkings_path %>
