@@ -1,6 +1,9 @@
-<p style="text-align:right;"><%= link_to "Sign in", register_path %></p>
+<p style="text-align:right;"><%= link_to "Sign in", new_account_registration_path %></p>
+
 
 <%= render "parkings/header" %>
+
+
 <div class='search-tags'>
   <%= form_tag(parkings_path, method: 'get', id: 'search-form') do %>
 

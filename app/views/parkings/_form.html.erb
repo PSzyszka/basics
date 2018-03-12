@@ -77,7 +77,7 @@
   </div>
 
   <%= form.label :kind, class: 'label' %>
-  <%= form.select(:kind, Parking.kinds.map {|k, v| [k ,v] }, {}, { :class => 'select'}) %>
+  <%= form.select(:kind, Parking.kinds.map {|k, v| [k ,k] }, {}, { :class => 'select'}) %>
 
   <div class='margins-for-botton'>
     <%= form.submit %>
