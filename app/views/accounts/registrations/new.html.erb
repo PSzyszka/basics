@@ -1,0 +1,45 @@
+<div class='account'>
+
+  <h2>Sign up</h2>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
+    <fieldset class='margins-for-main-div'>
+      <%= f.fields_for :owner do |owner| %>
+        <div class='two-labels-in-line'>
+          <%= owner.label :first_name, class: 'label' %>
+          <%= owner.text_field :first_name, class: 'input-second' %>
+        </div>
+
+        <div class='two-labels-in-line'>
+          <%= owner.label :last_name, class: 'label' %>
+          <%= owner.text_field :last_name, class: 'input-second' %>
+        </div>
+      <% end %>
+
+      <div class="account-input">
+        <%= f.label :email, class: 'label' %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'input' %>
+      </div>
+    </fieldset>
+
+    <div class="account-input">
+      <%= f.label :password, class: 'label' %>
+      <%= f.password_field :password, autocomplete: "off", class: 'input' %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %>
+    </div>
+
+    <div class="account-input">
+      <%= f.label :password_confirmation, class: 'label' %>
+      <%= f.password_field :password_confirmation, autocomplete: "off", class: 'input' %>
+    </div>
+
+    <div class='margins-for-botton'>
+      <%= f.submit "Sign up", class: 'botton' %>
+    </div>
+  <% end %>
+
+  <%= render "accounts/shared/links" %>
+</div>
