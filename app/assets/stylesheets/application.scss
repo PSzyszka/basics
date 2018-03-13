@@ -32,24 +32,51 @@
   margin: 15px 2px 2px 2px;
 }
 
+.margins-for-main-div {
+  margin: 0px 2px 30px 2px;
+}
+
 .botton,
+.select,
 .input {
   display: block;
   margin: auto;
 }
 
-.select{
+.two-labels-in-line {
+  display: inline-block;
+  margin: 15px 4px 2px 4px;
+  height: 33px;
+  width: 180px;
+}
+
+.input {
+  height: 33px;
+  width: 368px;
+}
+
+.input-second {
+  display: inline-block;
   display: block;
-  margin: auto;
+  height: 33px;
+  width: 180px;
+  margin: 0px 4px 2px 4px;
+}
+
+.select{
   height: 29px;
   width: 180px;
   border-radius: 5px;
   border-width: 1px;
 }
 
+.head-text {
+  text-align: center;
+}
+
 .label {
   display: block;
-  margin: 8px 2px 2px 2px;
+  margin: 15px 2px 2px 2px;
 }
 
 .label-parking {

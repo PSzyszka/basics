@@ -1,14 +1,18 @@
 .account {
-  background-color: lightgrey;
+  background-color: #F5F5F5;
   color: black;
-  padding: 10px;
+  padding: 30px;
   width: 500px;
   margin: auto;
-  border-radius: 20px;
+  border-radius: 30px;
+  text-align: center;
+  h2 {
+    text-transform: uppercase;
+    font-family: "Times New Roman", Times, serif;
+  }
 
   .account-input {
     display: block;
     color: black;
-    text-align: center;
   }
 }
