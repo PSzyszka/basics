@@ -1,5 +1,5 @@
 class ParkingsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_account!, except: [:index]
 
   def index
     @parkings = Parking.search(search_params)

@@ -1,4 +1,6 @@
 class CarsController < ApplicationController
+  before_action :authenticate_account!
+
   def index
     @cars = Car.where(owner_id: current_person.id)
   end

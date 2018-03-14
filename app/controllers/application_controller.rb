@@ -7,8 +7,7 @@ class ApplicationController < ActionController::Base
   private
 
   def current_person
-    return unless session[:current_user_id].present?
-    @current_person ||= current_account.owner
+    @current_person ||= current_account&.owner
   end
 
   def logged_in?
