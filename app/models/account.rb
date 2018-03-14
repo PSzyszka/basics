@@ -10,8 +10,4 @@ class Account < ApplicationRecord
   accepts_nested_attributes_for :owner
 
   validates :email, presence: true
-
-  def self.authenticate(email, password)
-    find_by(email: email).try(:authenticate, password)
-  end
 end
