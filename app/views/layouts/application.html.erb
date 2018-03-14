@@ -9,8 +9,6 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
 
     <div class="margins-for-page">
       <%= render "shared/flash" %>
@@ -19,7 +17,7 @@
           <%= link_to 'Log in', new_account_session_path %>
         <% else %>
           <%= current_person.full_name %>
-          <%= link_to 'Log out', logout_path(session[:current_user_id]), method: :delete %>
+          <%= link_to 'Log out', destroy_account_session_path, method: :delete %>
         <% end %>
       </p>
       <%= yield %>

@@ -3,12 +3,18 @@
   <h2>Sign up</h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
+    <div class='label'>
+      <%= devise_error_messages! %>
+    </div>
+
     <fieldset class='margins-for-main-div'>
       <%= f.fields_for :owner do |owner| %>
         <div class='two-labels-in-line'>
           <%= owner.label :first_name, class: 'label' %>
           <%= owner.text_field :first_name, class: 'input-second' %>
+          <%- if resource.errors[:first_name] %>
+            <%= resource.errors[:first_name].join(", ") %>
+          <% end %>
         </div>
 
         <div class='two-labels-in-line'>
@@ -16,6 +22,7 @@
           <%= owner.text_field :last_name, class: 'input-second' %>
         </div>
       <% end %>
+
 
       <div class="account-input">
         <%= f.label :email, class: 'label' %>
@@ -37,9 +44,7 @@
     </div>
 
     <div class='margins-for-botton'>
-      <%= f.submit "Sign up", class: 'botton' %>
+      <%= f.submit "Create account", class: 'botton' %>
     </div>
   <% end %>
-
-  <%= render "accounts/shared/links" %>
 </div>
